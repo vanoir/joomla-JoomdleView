@@ -44,7 +44,7 @@ $arrayDadosDoCurso = array();
 
 //metodo para descobrir se é um curso para o novo modelo
 function isNovoCurso($param2){
-	if($param2 == 9)
+	if($param2 == 18)
 		return true;
 }
 $cont01 = 0;
@@ -164,8 +164,7 @@ if(isNovoCurso($course_id)==true){
 	//var_dump($bibliotecaCurso);die();
 
 
-	if (isset($_GET["aula"])&&$_GET["aula"]=="prova") 
-		echo $scriptJS;
+
 	function getUsuarioNomeCertificado($cbUser){}
 
 
@@ -272,7 +271,7 @@ if(isNovoCurso($course_id)==true){
 			<?php } else {
 				$cpfTeste = $cbUser->getField( 'cb_cpf', $defaultValue = null, $output = 'html', $formatting = 'none', $reason = 'profile', $list_compare_types = 0 );
 				$cpfTeste2 = strlen(preg_replace("/[^0-9]/","",$cpfTeste));
-				if($course_id==8||$course_id==12||$course_id==17||$course_id==18||$course_id==19)
+				if($course_id==8||$course_id==12||$course_id==17||$course_id==19)
 					echo "<p>Este curso não dispõe de avaliação e certificação.</p>";
 				else
 					if(($cbUser->getField( 'cb_pais', $defaultValue = null, $output = 'html', $formatting = 'none', $reason = 'profile', $list_compare_types = 0 )!="BRASIL")||($cpfTeste2!=11)){
@@ -337,6 +336,16 @@ if(isNovoCurso($course_id)==true){
 							}
 
 
+	if (isset($_GET["aula"])&&$_GET["aula"]=="prova") 
+		echo "<script> 
+
+jQuery( document ).ready(function() {
+console.log( 'ready!' );
+document.getElementById('tab-1').style.display= 'none';
+document.getElementById('tab-3').style.display= 'block';
+});
+
+</script>";
 }else{
 	//this->mods sao as aulas vindo do moodle
 	//retira a primeira 'aula'
