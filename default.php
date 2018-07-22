@@ -335,17 +335,14 @@ if(isNovoCurso($course_id)==true){
 								unset($conteudoAula["secao"]);
 							}
 
-
-	if (isset($_GET["aula"])&&$_GET["aula"]=="prova") 
-		echo "<script> 
-
-jQuery( document ).ready(function() {
-console.log( 'ready!' );
+if ($_GET["aula"]==='prova'){
+		echo "<script> jQuery( document ).ready(function() {
+console.log( 'ready!' ); 
 document.getElementById('tab-1').style.display= 'none';
 document.getElementById('tab-3').style.display= 'block';
 });
 
-</script>";
+</script>";}
 }else{
 	//this->mods sao as aulas vindo do moodle
 	//retira a primeira 'aula'
@@ -450,7 +447,6 @@ document.getElementById('tab-3').style.display= 'block';
 	}
 
 	//inicializa varivel de script
-	$scriptJS;
 	?>
 		<div class="parteEsquerda span9">
 		<div class="span12 cabecalho-aula">
@@ -470,15 +466,6 @@ document.getElementById('tab-3').style.display= 'block';
 			echo $certificacaoCurso["frame"]; 
 
 
-		$scriptJS = "<script> 
-
-			jQuery( document ).ready(function() {
-					console.log( 'ready!' );
-					document.getElementById('tab-1').style.display= 'none';
-					document.getElementById('tab-3').style.display= 'block';
-					});
-
-		</script>";
 
 	}else{
 		echo $conteudoAula["video"]["content"];
