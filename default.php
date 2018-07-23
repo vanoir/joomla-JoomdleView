@@ -44,7 +44,7 @@ $arrayDadosDoCurso = array();
 
 //metodo para descobrir se é um curso para o novo modelo
 function isNovoCurso($param2){
-	if($param2 == 18)
+	if($param2 == 9)
 		return true;
 }
 $cont01 = 0;
