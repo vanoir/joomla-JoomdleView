@@ -238,8 +238,7 @@ if(isNovoCurso($course_id)==true){
 		<?php echo $menuAulas; ?>
 		</ul>	
 		</div>
-		<div id="tab-2" class="tab-content">
-		<ul>
+		<div id="tab-2" class="tab-content"><ul>
 		<?php
 		$painelEstaAberto = 0;
 	$listaDeMateriais;
@@ -250,21 +249,23 @@ if(isNovoCurso($course_id)==true){
 		if (strpos(''.$umArquivo, 'text_to_html')==true ) {
 			if($painelEstaAberto===1){
 				//se ja existe painel aberto fecha.
-				$listaDeMateriais .= "</div></div>";
+				$listaDeMateriais .= "</ul></div></div>";
 				$painelEstaAberto = 0;
 			}
-				$umArquivo = str_replace("</div>", "</h4></div> <div class=\"panel-body\">", $umArquivo );
-				$listaDeMateriais .= str_replace("<div class=\"text_to_html\">", "<div class=\"panel panel-default\"> <div class=\"panel-heading\"><h4 class=\"panel-title\"> ", $umArquivo );
-				$painelEstaAverto = 1;
-			}
-	if (strpos(''.$umArquivo, 'href')==true ) {
-		$listaDeMateriais .= $umArquivo;
+			$umArquivo = str_replace("</div>", "</h4></div> <div class=\"panel-body\"> <ul>", $umArquivo );
+			$listaDeMateriais .= str_replace("<div class=\"text_to_html\">", "<div class=\"panel panel-default\"> <div class=\"panel-heading\"><h4 class=\"panel-title\"> ", $umArquivo );
+			$painelEstaAberto = 1;
+		}
+		if (strpos(''.$umArquivo, 'href')==true ) {
+			$listaDeMateriais .= $umArquivo;
+		}
 	}
-}
-die(var_dump($listaDeMateriais));
+	echo $listaDeMateriais."</ul></div></div>";
+	//die(var_dump($listaDeMateriais));
+
+
 	?>
-		</ul>
-		</div>
+		</ul></div>
 		<div id="tab-3" class="tab-content">
 		<ul>
 		<!-- Aba de certificação -->
