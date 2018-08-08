@@ -2,8 +2,6 @@
 
 <?php
 
-//dev da aba materiais parada
-
 $itemid = JoomdleHelperContent::getMenuItem();
 
 $linkstarget = $this->params->get( 'linkstarget' );
@@ -46,7 +44,7 @@ $arrayDadosDoCurso = array();
 
 //metodo para descobrir se é um curso para o novo modelo
 function isNovoCurso($param2){
-	if($param2 == 9)
+	if($param2 == 18)
 		return true;
 }
 $cont01 = 0;
@@ -240,39 +238,18 @@ if(isNovoCurso($course_id)==true){
 		<?php echo $menuAulas; ?>
 		</ul>	
 		</div>
-		<div id="tab-2" class="tab-content"><ul>
-		<?php
-		$painelEstaAberto = 0;
-	$listaDeMateriais;
-	foreach($bibliotecaCurso as $umArquivo){
-		//vai ver se é rotulo, arquivo ou lixo.
-
-		//caso rotulo é preciso desenhar o painel
-		if (strpos(''.$umArquivo, 'text_to_html')==true ) {
-			if($painelEstaAberto===1){
-				//se ja existe painel aberto fecha.
-				$listaDeMateriais .= "</ul></div></div>";
-				$painelEstaAberto = 0;
-			}
-			$umArquivo = str_replace("</div>", "</h4></div> <div class=\"panel-body\"> <ul>", $umArquivo );
-			$listaDeMateriais .= str_replace("<div class=\"text_to_html\">", "<div class=\"panel panel-default\"> <div class=\"panel-heading\"><h4 class=\"panel-title\"> ", $umArquivo );
-			$painelEstaAberto = 1;
-		}
-		if (strpos(''.$umArquivo, 'href')==true ) {
-			$listaDeMateriais .= $umArquivo;
-		}
-	}
-	echo $listaDeMateriais."</ul></div></div>";
-	//die(var_dump($listaDeMateriais));
-
-
-	?>
-		</ul></div>
-		<div id="tab-3" class="tab-content">
+		<div id="tab-2" class="tab-content">
 		<ul>
-		<!-- Aba de certificação -->
-		<!-- 2 conteudos, para logados e nao logados -->
-		<?php $user = JFactory::getUser();
+		<?php foreach($bibliotecaCurso as $umArquivo) 
+		if (strpos(''.$umArquivo, 'href')==true ) 
+			echo $umArquivo; ?>
+				</ul>
+				</div>
+				<div id="tab-3" class="tab-content">
+				<ul>
+				<!-- Aba de certificação -->
+				<!-- 2 conteudos, para logados e nao logados -->
+				<?php $user = JFactory::getUser();
 	///////////////////IF
 	if ( $user->get('guest')  ) { //$user->get('guest') retorna '1' caso seja visitante ?>
 
