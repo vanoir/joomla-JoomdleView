@@ -2,6 +2,8 @@
 
 <?php
 
+//dev da aba materiais parada
+
 $itemid = JoomdleHelperContent::getMenuItem();
 
 $linkstarget = $this->params->get( 'linkstarget' );
