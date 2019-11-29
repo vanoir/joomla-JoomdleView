@@ -268,9 +268,23 @@ if(isNovoCurso($course_id)==true){
 		</ul></div>
 		<div id="tab-3" class="tab-content">
 		<ul>
+<<<<<<< Updated upstream
 		<!-- Aba de certificação -->
 		<!-- 2 conteudos, para logados e nao logados -->
 		<?php $user = JFactory::getUser();
+=======
+		<?php foreach($bibliotecaCurso as $umArquivo) 
+		die(var_dump($bibliotecaCurso));
+		if (strpos(''.$umArquivo, 'href')==true ) 
+			echo $umArquivo; ?>
+				</ul>
+				</div>
+				<div id="tab-3" class="tab-content">
+				<ul>
+				<!-- Aba de certificação -->
+				<!-- 2 conteudos, para logados e nao logados -->
+				<?php $user = JFactory::getUser();
+>>>>>>> Stashed changes
 	///////////////////IF
 	if ( $user->get('guest')  ) { //$user->get('guest') retorna '1' caso seja visitante ?>
 
